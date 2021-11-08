@@ -5,7 +5,7 @@ require_relative 'teacher'
 require_relative 'student'
 require_relative 'classroom'
 
-class Main
+class App
   def initialize
     @classroom = Classroom.new('Microverse 2.0')
     @people = []
@@ -26,9 +26,12 @@ class Main
     puts 'Welcome to School Library App! '
     puts ''
 
-    while @option != '7'
+    loop do
       @options.each { |key, value| puts "#{key}) #{value}" }
+
       option = gets.chomp
+      break if option == '7'
+
       handle_option option
     end
   end
@@ -167,7 +170,7 @@ class Main
 end
 
 def main
-  app = Main.new
+  app = App.new
   app.run
 end
 
