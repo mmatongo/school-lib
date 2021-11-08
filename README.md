@@ -1,4 +1,5 @@
 # OOP school library
+[![Linters](https://github.com/mmatongo/school-lib/actions/workflows/linters.yml/badge.svg)](https://github.com/mmatongo/school-lib/actions/workflows/linters.yml) [![Tests](https://github.com/mmatongo/school-lib/actions/workflows/tests.yml/badge.svg)](https://github.com/mmatongo/school-lib/actions/workflows/tests.yml)
 
 > A simple Ruby utilit to allow you to keep track of what students have borrowed books.
 
