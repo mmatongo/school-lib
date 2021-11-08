@@ -28,4 +28,8 @@ class Person
   def add_rental(rental)
     @rentals << rental
   end
+
+  def to_s
+    "Name: #{@name}, ID: #{@id}, Age: #{@age} "
+  end
 end
