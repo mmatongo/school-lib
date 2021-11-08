@@ -1,3 +1,5 @@
+require_relative 'corrector'
+
 class Person
   attr_accessor :name, :age
   attr_reader :id
@@ -15,5 +17,9 @@ class Person
 
   def of_age?
     @age >= 18
+  end
+
+  def validate_name?
+    @name = Corrector.new.correct_name(@name)
   end
 end
