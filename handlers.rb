@@ -45,30 +45,22 @@ module Handlers
   end
 
   def create_student
-    print 'Age: '
-    age = gets.chomp
-
-    print 'Name: '
-    name = gets.chomp
+    gather_details
 
     print 'Has parent permission? [Y/N]: '
     parent_permission = gets.chomp.downcase == 'y'
 
-    student = Student.new(name: name, age: age, parent_permission: parent_permission, classroom: @classroom)
+    student = Student.new(name: @name, age: @age, parent_permission: parent_permission, classroom: @classroom)
     @people << student
   end
 
   def create_teacher
-    print 'Age: '
-    age = gets.chomp
-
-    print 'Name: '
-    name = gets.chomp
+    gather_details
 
     print 'Specialization: '
     specialization = gets.chomp
 
-    teacher = Teacher.new(name: name, age: age, specialization: specialization)
+    teacher = Teacher.new(name: @name, age: @age, specialization: specialization)
     @people << teacher
   end
 
@@ -83,6 +75,17 @@ module Handlers
     @books << book
 
     puts 'Book created successfully'
+  end
+
+  def gather_details
+    print 'Name: '
+    name = gets.chomp
+
+    print 'Age: '
+    age = gets.chomp
+
+    @name = name
+    @age = age
   end
 
   def create_rental
