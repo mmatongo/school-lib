@@ -71,4 +71,47 @@ module Handlers
     teacher = Teacher.new(name: name, age: age, specialization: specialization)
     @people << teacher
   end
+  def create_book
+    print 'Title: '
+    title = gets.chomp
+
+    print 'Author: '
+    author = gets.chomp
+
+    book = Book.new(title, author)
+    @books << book
+
+    puts 'Book created successfully'
+  end
+
+  def create_rental
+    puts 'Select a book from the following list by number'
+    @books.each_with_index { |book, index| puts "#{index}) #{book}" }
+
+    book_index = gets.chomp.to_i
+
+    puts
+    puts 'Select a person from the following list by number (not id)'
+    @people.each_with_index { |person, index| puts "#{index}) #{person}" }
+
+    person_index = gets.chomp.to_i
+
+    puts
+    print 'Date: '
+    date = gets.chomp
+
+    rental = Rental.new(date, @books[book_index], @people[person_index])
+    @rentals << rental
+
+    puts 'Rental created successfully'
+  end
+
+  def list_rentals_by_person_id
+    print 'ID of person: '
+    id = gets.chomp
+
+    puts 'Rentals:'
+
+    @rentals.each { |rental| puts rental if rental.person.id == id.to_i }
+  end
 end
