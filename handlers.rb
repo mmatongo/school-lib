@@ -79,13 +79,9 @@ module Handlers
 
   def gather_details
     print 'Name: '
-    name = gets.chomp
-
+    @name = gets.chomp
     print 'Age: '
-    age = gets.chomp
-
-    @name = name
-    @age = age
+    @age = gets.chomp
   end
 
   def create_rental
