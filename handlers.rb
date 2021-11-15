@@ -71,6 +71,7 @@ module Handlers
     teacher = Teacher.new(name: name, age: age, specialization: specialization)
     @people << teacher
   end
+
   def create_book
     print 'Title: '
     title = gets.chomp
