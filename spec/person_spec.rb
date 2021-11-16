@@ -43,5 +43,17 @@ describe 'Person' do
         expect(person.can_use_services?).to be true
       end
     end
+    context 'use method to validate age' do
+      it 'is of age' do
+        person = Person.new(age: 18)
+        expect(person.of_age?).to be true
+      end
+    end
+    context 'use method to correct name' do
+      it 'correct name' do
+        person = Person.new(age: 18, name: 'Thisus averylongname')
+        expect(person.validate_name?).to eq('Thisus ave')
+      end
+    end
   end
 end

@@ -10,9 +10,6 @@ describe 'Teacher' do
       expect(@teacher).to be_an_instance_of Teacher
     end
 
-    it 'teacher is assigned correct class' do
-      expect(@teacher.classroom).to eql @classroom
-    end
     it 'can use services' do
       expect(@teacher.can_use_services?).to be true
     end
