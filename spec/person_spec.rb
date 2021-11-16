@@ -1,0 +1,47 @@
+require_relative 'helper_spec'
+
+describe 'Person' do
+  before :each do
+    @person = Person.new(age: 20, name: 'Daniel', parent_permission: true)
+  end
+
+  describe '#new' do
+    person = Person.new(age: 15)
+
+    it 'return the person object' do
+      expect(@person).to be_an_instance_of Person
+    end
+
+    it 'has a set name Daniel' do
+      expect(@person.name).to eql 'Daniel'
+    end
+
+    it 'has a default name of Unknown' do
+      expect(person.name).to eql 'Unknown'
+    end
+
+    it 'should have parents permission' do
+      expect(person.parent_permission).to be true
+    end
+
+    it 'should not have parents permission' do
+      nperson = Person.new(age: 15, parent_permission: false)
+      expect(nperson.parent_permission).to be_falsey
+    end
+  end
+
+  describe 'Can use services' do
+    context 'is minor' do
+      it 'cannot use services' do
+        person = Person.new(age: 15, name: 'Titus', parent_permission: false)
+        expect(person.can_use_services?).to be false
+      end
+    end
+    context 'is adult' do
+      it 'can use services' do
+        person = Person.new(age: 18, name: 'Titus')
+        expect(person.can_use_services?).to be true
+      end
+    end
+  end
+end
