@@ -1,14 +1,17 @@
 require_relative 'classroom'
 require_relative 'handlers'
+require_relative 'preserve'
 
 class App
   include Handlers
 
   def initialize
     @classroom = Classroom.new('Microverse 2.0')
-    @people = []
-    @books = []
-    @rentals = []
+    preserver = Preserver.new
+
+    @people = preserver.the_objector(@classroom)['people']
+    @books = preserver.the_objector(@classroom)['books']
+    @rentals = preserver.the_objector(@classroom)['rentals']
     @options = {
       '1' => 'List all books',
       '2' => 'List all people',
@@ -29,6 +32,9 @@ class App
 
       option = gets.chomp
       break if option == '7'
+
+      preserver = Preserver.new
+      preserver.preserve(people: @people, books: @books, rentals: @rentals)
 
       handle_option option
     end
